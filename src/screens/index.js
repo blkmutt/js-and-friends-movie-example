@@ -42,6 +42,7 @@ export default function App() {
           type="text"
           value={searchValue}
           onChange={e => setSearchValue(e.target.value)}
+          onClick={e => e.target.select()}
         />
       </div>
       <div className="Message">{message}</div>
