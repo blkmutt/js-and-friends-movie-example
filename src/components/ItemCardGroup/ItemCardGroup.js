@@ -22,6 +22,7 @@ function ItemCardGroup(props) {
           />
         );
       })}
+      {props.films.length === 0 && <div>No Results</div>}
     </div>
   );
 }

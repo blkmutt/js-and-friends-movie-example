@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import Modal from "react-modal";
 import { getYear } from "../../utils/DateFunctions";
 import Heading from "../Heading";
 import Button from "../Button";
-import Modal from "react-modal";
+import { GlobalContext } from "../GlobalStateProvider";
 import "././FilmDetail.css";
 Modal.setAppElement("#root");
 
-function FilmDetail({ film, clearModal, ...rest }) {
+function FilmDetail({ clearModal, ...rest }) {
+  const { state, dispatch } = useContext(GlobalContext);
+  const film = state.active_film || {};
   const year = getYear(film.release_date);
+
   return (
     <Modal
       isOpen={film.id !== undefined}
@@ -27,7 +31,10 @@ function FilmDetail({ film, clearModal, ...rest }) {
         />
       )}
       <p className="FilmOverview">{film.overview}</p>
-      <Button className="FilmButton" onClick={() => clearModal()}>
+      <Button
+        className="FilmButton"
+        onClick={() => dispatch({ type: "SET_ACTIVE_FILM", id: undefined })}
+      >
         <b>CLOSE</b>
       </Button>
     </Modal>

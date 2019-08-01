@@ -30,6 +30,7 @@ export default function App() {
       return () => clearTimeout(timer);
     } else {
       setMessage("Empty Search");
+      dispatch({ type: "SAVE_RESULTS", payload: { results: [] } });
     }
   }, [searchValue, dispatch]);
 
@@ -49,10 +50,7 @@ export default function App() {
       <div>
         <ItemCardGroup films={state.films} selectedItemTitle={message} />
       </div>
-      <FilmDetail
-        film={state.active_film}
-        clearModal={() => dispatch({ type: "SET_ACTIVE_FILM", id: undefined })}
-      />
+      <FilmDetail />
     </div>
   );
 }
