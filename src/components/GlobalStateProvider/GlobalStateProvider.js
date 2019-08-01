@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-const initialState = { films: [], credits: [] };
+const initialState = { films: [], active_film: {} };
 export const GlobalContext = createContext(initialState);
 
 function reducer(state, action) {
@@ -11,6 +11,15 @@ function reducer(state, action) {
         films: action.payload.results
       };
       return saveState;
+    case "SET_ACTIVE_FILM":
+      const active_film = action.id
+        ? state.films.find(film => film.id === action.id)
+        : {};
+      const activeState = {
+        ...state,
+        active_film
+      };
+      return activeState;
     default:
       throw new Error();
   }

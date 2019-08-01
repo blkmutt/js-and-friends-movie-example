@@ -9,6 +9,7 @@ function ItemCardGroup(props) {
         return (
           <ItemCard
             key={item.id}
+            id={item.id}
             title={item.title}
             description={item.overview}
             imageUrl={

@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../Card";
+import { GlobalContext } from "../GlobalStateProvider";
 import "./ItemCard.css";
 
-function ItemCard({
-  title,
-  onAddToCart,
-  price,
-  description,
-  imageUrl,
-  selected,
-  year,
-  cast,
-  ...rest
-}) {
+function ItemCard({ id, title, imageUrl, year, ...rest }) {
+  const { dispatch } = useContext(GlobalContext);
+
   return (
-    <Card {...rest} className="ItemCard" selected={selected}>
+    <Card
+      {...rest}
+      className="ItemCard"
+      onClick={() => dispatch({ type: "SET_ACTIVE_FILM", id })}
+    >
       <div className="ItemCardContent">
         <div className="ItemCardImage">
           <img src={imageUrl} alt="" />
@@ -24,7 +21,6 @@ function ItemCard({
           {title} {year && `(${year})`}
         </div>
       </div>
-      {false && description && <span>{description}</span>}
     </Card>
   );
 }

@@ -1,0 +1,22 @@
+.FilmHeader {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.FilmImage {
+  clear: both;
+  display: block;
+  margin: 0px auto;
+}
+
+.FilmOverview {
+  width: 100%;
+  margin: 20 auto;
+}
+
+.FilmButton {
+  width: 100%;
+  margin: 0px auto;
+  background-color: #444;
+  margin-bottom: 20px;
+}

@@ -1,4 +1,22 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  background-color: "#777777";
+}
+
+.Header {
+  padding: 10px;
+}
+
+.SearchBox {
+  width: calc(100% - 30px);
+  margin: auto;
+  height: 2.5em;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 4px;
+}
+
+.Message {
+  margin: 10px;
 }

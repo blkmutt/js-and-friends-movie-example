@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { search } from "../tmdb";
 import ItemCardGroup from "../components/ItemCardGroup";
 import Heading from "../components/Heading";
+import FilmDetail from "../components/FilmDetail";
 import { GlobalContext } from "../components/GlobalStateProvider";
 import "./styles.css";
 
@@ -34,17 +35,23 @@ export default function App() {
 
   return (
     <div className="App">
-      <Heading>Search For Movies!</Heading>
+      <Heading className="Header">Search For Movies!</Heading>
       <div>
         <input
+          className="SearchBox"
           type="text"
           value={searchValue}
           onChange={e => setSearchValue(e.target.value)}
         />
       </div>
-      <div>{message}</div>
-
-      <ItemCardGroup films={state.films} selectedItemTitle={message} />
+      <div className="Message">{message}</div>
+      <div>
+        <ItemCardGroup films={state.films} selectedItemTitle={message} />
+      </div>
+      <FilmDetail
+        film={state.active_film}
+        clearModal={() => dispatch({ type: "SET_ACTIVE_FILM", id: undefined })}
+      />
     </div>
   );
 }
